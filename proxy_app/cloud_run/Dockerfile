@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM python:3.10-alpine
+FROM python:3.10-slim
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt --require-hashes
 COPY . .
 ENTRYPOINT ["python", "app.py"]
