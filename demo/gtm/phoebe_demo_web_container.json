@@ -1,0 +1,857 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2023-06-02 13:13:06",
+    "containerVersion": {
+        "path": "accounts/1234567890/containers/11111111/versions/0",
+        "accountId": "1234567890",
+        "containerId": "11111111",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/1234567890/containers/11111111",
+            "accountId": "1234567890",
+            "containerId": "11111111",
+            "name": "Phoebe Demo Web",
+            "publicId": "GTM-ABCDEFG",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "0000000000000",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/1234567890/containers/11111111/workspaces?apiLink=container",
+            "features": {
+                "supportUserPermissions": true,
+                "supportEnvironments": true,
+                "supportWorkspaces": true,
+                "supportGtagConfigs": false,
+                "supportBuiltInVariables": true,
+                "supportClients": false,
+                "supportFolders": true,
+                "supportTags": true,
+                "supportTemplates": true,
+                "supportTriggers": true,
+                "supportVariables": true,
+                "supportVersions": true,
+                "supportZones": true
+            },
+            "tagIds": [
+                "GTM-ABCDEFG"
+            ]
+        },
+        "tag": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "tagId": "13",
+                "name": "[GA4 Configuration] All Pages",
+                "type": "gaawc",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "serverContainerUrl",
+                        "value": "{{Server Container URL}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "userDataVariable",
+                        "value": "{{User-Provided Data}}"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "fieldsToSet",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "name",
+                                        "value": "debug_mode"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "name",
+                                        "value": "user_id"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{User ID}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "name",
+                                        "value": "new_ip"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{new_ip}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enhancedUserId",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendPageView",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableSendToServerContainer",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementId",
+                        "value": "{{GA Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "tagId": "16",
+                "name": "[GA4] Login/Logout",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "{{Lookup - Login/logout click}}"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventParameters",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "name",
+                                        "value": "method"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "website"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TAG_REFERENCE",
+                        "key": "measurementId",
+                        "value": "[GA4 Configuration] All Pages"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "firingTriggerId": [
+                    "15",
+                    "14"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "tagId": "33",
+                "name": "[GA4] Ecommerce Events",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "getEcommerceDataFrom",
+                        "value": "dataLayer"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "{{Event}}"
+                    },
+                    {
+                        "type": "TAG_REFERENCE",
+                        "key": "measurementId",
+                        "value": "[GA4 Configuration] All Pages"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "firingTriggerId": [
+                    "22"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "tagId": "34",
+                "name": "[GA4] Select Content",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "select_content"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventParameters",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "name",
+                                        "value": "content_type"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{Click Text}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TAG_REFERENCE",
+                        "key": "measurementId",
+                        "value": "[GA4 Configuration] All Pages"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "firingTriggerId": [
+                    "29",
+                    "21",
+                    "30",
+                    "20",
+                    "28"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "5",
+                "name": "purchase",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "purchase"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "14",
+                "name": "Click - Logout",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Classes}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "logout btn"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "15",
+                "name": "Click - Login",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "Login"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Classes}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "btn"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "20",
+                "name": "Click - View Products",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "View products"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "21",
+                "name": "Click - Navigation",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "MATCH_REGEX",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "Home|Products"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "22",
+                "name": "E-commerce Events",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "MATCH_REGEX",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "add_to_cart|purchase|remove_from_cart|view_cart|view_item|view_item_list"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "28",
+                "name": "Click - Logo",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Classes}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "primary-logo"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "29",
+                "name": "Click - View all Products",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "Viewing the products"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "30",
+                "name": "Click - Basket",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "MATCH_REGEX",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click URL}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "(basket)|(cart.png)"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "7",
+                "name": "Lookup - Login/logout click",
+                "type": "smm",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "input",
+                        "value": "{{Click Text}}"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "map",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "Log out"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "logout"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "Login"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "login"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "8",
+                "name": "User ID",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "user.id"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "9",
+                "name": "new_ip",
+                "type": "k",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "decodeCookie",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "new_ip"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "10",
+                "name": "GA Measurement ID",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "G-NQQ0RP7WFT"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "11",
+                "name": "User Email",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "user.email"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "12",
+                "name": "User-Provided Data",
+                "type": "awec",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "mode",
+                        "value": "MANUAL"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "email",
+                        "value": "{{User Email}}"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "24",
+                "name": "Transaction Value",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.value"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "25",
+                "name": "Transaction ID",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.transaction_id"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "26",
+                "name": "Currency",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.currency"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "36",
+                "name": "Server Container URL",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "https://tagging.example.org"
+                    }
+                ],
+                "fingerprint": "0000000000000",
+                "formatValue": {}
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "EVENT",
+                "name": "Event"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "CLICK_CLASSES",
+                "name": "Click Classes"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "CLICK_URL",
+                "name": "Click URL"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "CLICK_TEXT",
+                "name": "Click Text"
+            }
+        ],
+        "fingerprint": "0000000000000",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/1234567890/containers/11111111/versions/0?apiLink=version"
+    }
+}

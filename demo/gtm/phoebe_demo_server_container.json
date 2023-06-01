@@ -1,0 +1,1406 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2023-06-02 14:05:05",
+    "containerVersion": {
+        "path": "accounts/1234567890/containers/11111111/versions/0",
+        "accountId": "1234567890",
+        "containerId": "11111111",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/1234567890/containers/11111111",
+            "accountId": "1234567890",
+            "containerId": "11111111",
+            "name": "Phoebe Demo Server",
+            "publicId": "GTM-ABCDEFG",
+            "usageContext": [
+                "SERVER"
+            ],
+            "fingerprint": "1685614772955",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/1234567890/containers/11111111/workspaces?apiLink=container",
+            "features": {
+                "supportUserPermissions": true,
+                "supportEnvironments": true,
+                "supportWorkspaces": true,
+                "supportGtagConfigs": false,
+                "supportBuiltInVariables": true,
+                "supportClients": true,
+                "supportFolders": true,
+                "supportTags": true,
+                "supportTemplates": true,
+                "supportTriggers": true,
+                "supportVariables": true,
+                "supportVersions": true,
+                "supportZones": true
+            },
+            "tagIds": [
+                "GTM-ABCDEFG"
+            ],
+            "taggingServerUrls": [
+                "https://tagging.example.org"
+            ]
+        },
+        "tag": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "tagId": "12",
+                "name": "[GA4] All Events",
+                "type": "sgtmgaaw",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "redactVisitorIp",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "epToIncludeDropdown",
+                        "value": "all"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "upToIncludeDropdown",
+                        "value": "all"
+                    }
+                ],
+                "fingerprint": "1685629613356",
+                "firingTriggerId": [
+                    "7"
+                ],
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "tagId": "23",
+                "name": "[Floodlight] Sales Tag",
+                "type": "sgtmfls",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableConversionLinker",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "revenue",
+                        "value": "99999"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableProductReporting",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "groupTag",
+                        "value": "retail"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "uniqueParamsDataSource",
+                        "value": "CUSTOM"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "activityTag",
+                        "value": "purchase"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "ordinalType",
+                        "value": "TRANSACTIONS"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableEnhancedMatch",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "advertiserId",
+                        "value": "12345"
+                    }
+                ],
+                "fingerprint": "1685629613359",
+                "firingTriggerId": [
+                    "22"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "tagId": "41",
+                "name": "Conversion Linker",
+                "type": "sgtmadscl",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableCookieOverrides",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1685629613364",
+                "firingTriggerId": [
+                    "2147479574"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "tagId": "44",
+                "name": "[GAds] Conversion Tracking",
+                "type": "sgtmadsct",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableNewCustomerReporting",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableConversionLinker",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableProductReporting",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionValue",
+                        "value": "{{Phoebe Prediction}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableEnhancedMatch",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionId",
+                        "value": "1234567890"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "currencyCode",
+                        "value": "{{Currency (cu)}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionLabel",
+                        "value": "abcdEFGHijklmnop"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "rdp",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1685629613366",
+                "firingTriggerId": [
+                    "22"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "7",
+                "name": "All Events",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "MATCH_REGEX",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": ".*"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1685615599719"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "triggerId": "22",
+                "name": "Event - purchase",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "purchase"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1685629613359"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "10",
+                "name": "Creative Slot",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.creative_slot"
+                    }
+                ],
+                "fingerprint": "1685629613355"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "11",
+                "name": "Transaction ID",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.transaction_id"
+                    }
+                ],
+                "fingerprint": "1685629613355"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "14",
+                "name": "Screen Resolution (sr)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "sr"
+                    }
+                ],
+                "fingerprint": "1685629613357"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "16",
+                "name": "Referrer",
+                "type": "rh",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "headerName",
+                        "value": "Referrer"
+                    }
+                ],
+                "fingerprint": "1685629613357"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "17",
+                "name": "Creative Location ID",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.creative_location_id"
+                    }
+                ],
+                "fingerprint": "1685629613358"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "18",
+                "name": "Custom Campaign Source (cs)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "cs"
+                    }
+                ],
+                "fingerprint": "1685629613358"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "19",
+                "name": "User language (ul)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ul"
+                    }
+                ],
+                "fingerprint": "1685629613358"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "20",
+                "name": "Item List ID",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.item_list_id"
+                    }
+                ],
+                "fingerprint": "1685629613358"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "24",
+                "name": "Transaction Coupon",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.coupon"
+                    }
+                ],
+                "fingerprint": "1685629613360"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "25",
+                "name": "Session Hit Count (_s)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "_s"
+                    }
+                ],
+                "fingerprint": "1685629613360"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "27",
+                "name": "method",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.method"
+                    }
+                ],
+                "fingerprint": "1685629613361"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "28",
+                "name": "User Country (_uc)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "_uc"
+                    }
+                ],
+                "fingerprint": "1685629613361"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "29",
+                "name": "Creative Name",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.creative_name"
+                    }
+                ],
+                "fingerprint": "1685629613361"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "30",
+                "name": "Cookie",
+                "type": "rh",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "headerName",
+                        "value": "Cookie"
+                    }
+                ],
+                "fingerprint": "1685629613361"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "31",
+                "name": "Transaction Shipping",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "epn.shipping"
+                    }
+                ],
+                "fingerprint": "1685629613362"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "32",
+                "name": "Custom Campaign Name (cn)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "cn"
+                    }
+                ],
+                "fingerprint": "1685629613362"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "33",
+                "name": "Consent Status (gcs)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "gcs"
+                    }
+                ],
+                "fingerprint": "1685629613362"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "34",
+                "name": "Consent Default (gcd)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "gcd"
+                    }
+                ],
+                "fingerprint": "1685629613362"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "36",
+                "name": "Custom Campaign Medium (cm)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "cm"
+                    }
+                ],
+                "fingerprint": "1685629613363"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "37",
+                "name": "Custom Campaign Term (ct)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ct"
+                    }
+                ],
+                "fingerprint": "1685629613363"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "38",
+                "name": "Session Start (_ss)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "_ss"
+                    }
+                ],
+                "fingerprint": "1685629613364"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "39",
+                "name": "Transaction Value",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "epn.value"
+                    }
+                ],
+                "fingerprint": "1685629613364"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "42",
+                "name": "Currency (cu)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "cu"
+                    }
+                ],
+                "fingerprint": "1685629613365"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "43",
+                "name": "Phoebe Prediction",
+                "type": "cvt_11111111_35",
+                "parameter": [
+                    {
+                        "type": "LIST",
+                        "key": "data",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "item_id"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "shoes"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "language"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "en-us"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "mobile_brand_name"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "Apple"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "mobile_model_name"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "Safari"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "operating_system"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "Macintosh"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "platform"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "WEB"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "purchase_revenue_in_usd_num"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "100.25"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "total_item_quantity_int"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "4"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "category"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "category"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "continent"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "continent"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "vertexEndpointID",
+                        "value": "demo-model-endpoint"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "endpointURL",
+                        "value": "{{Proxy App URL}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cloudLocation",
+                        "value": "{{Google Cloud Region}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "projectNumber",
+                        "value": "{{Google Cloud Project Number}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "requestTimeout",
+                        "value": "3000"
+                    }
+                ],
+                "fingerprint": "1685714572769",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "46",
+                "name": "First Visit (_fv)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "_fv"
+                    }
+                ],
+                "fingerprint": "1685629613366"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "47",
+                "name": "Session ID (sid)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "sid"
+                    }
+                ],
+                "fingerprint": "1685629613367"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "48",
+                "name": "Custom Campaign Content (cc)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "cc"
+                    }
+                ],
+                "fingerprint": "1685629613367"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "49",
+                "name": "Session Engagement (seg)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "seg"
+                    }
+                ],
+                "fingerprint": "1685629613367"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "51",
+                "name": "Promotion ID",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.promotion_id"
+                    }
+                ],
+                "fingerprint": "1685629613368"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "52",
+                "name": "Document Location (dl)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "dl"
+                    }
+                ],
+                "fingerprint": "1685629613368"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "53",
+                "name": "Client ID (cid)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "cid"
+                    }
+                ],
+                "fingerprint": "1685629613368"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "54",
+                "name": "Session Count (sct)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "sct"
+                    }
+                ],
+                "fingerprint": "1685629613369"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "55",
+                "name": "GA4 Measurement ID (tid)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "tid"
+                    }
+                ],
+                "fingerprint": "1685629613369"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "56",
+                "name": "Host",
+                "type": "rh",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "headerName",
+                        "value": "Host"
+                    }
+                ],
+                "fingerprint": "1685629613369"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "57",
+                "name": "Document Referer (dr)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "dr"
+                    }
+                ],
+                "fingerprint": "1685629613370"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "58",
+                "name": "Transaction Affiliation",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.affiliation"
+                    }
+                ],
+                "fingerprint": "1685629613370"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "59",
+                "name": "Transaction Tax",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "epn.tax"
+                    }
+                ],
+                "fingerprint": "1685629613370"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "60",
+                "name": "Origin",
+                "type": "rh",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "headerName",
+                        "value": "Origin"
+                    }
+                ],
+                "fingerprint": "1685629613370"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "61",
+                "name": "Item List Name",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.item_list_name"
+                    }
+                ],
+                "fingerprint": "1685629613371"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "62",
+                "name": "Event Time (_et)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "_et"
+                    }
+                ],
+                "fingerprint": "1685629613371"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "63",
+                "name": "Promotion Name",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.promotion_name"
+                    }
+                ],
+                "fingerprint": "1685629613371"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "64",
+                "name": "content_type",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ep.content_type"
+                    }
+                ],
+                "fingerprint": "1685629613371"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "65",
+                "name": "Custom Campaign ID (ci)",
+                "type": "qp",
+                "notes": "This variable has been created by the sGTM Migrator tool. It is based on either an event parameter, an user property or standard parameter from your GA4 tags pointing at this server container.",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "queryParamName",
+                        "value": "ci"
+                    }
+                ],
+                "fingerprint": "1685629613372"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "66",
+                "name": "Proxy App URL",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "https://my-proxy-app.run.app/predict"
+                    }
+                ],
+                "fingerprint": "1685712827221",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "67",
+                "name": "Google Cloud Project Number",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "9876543210"
+                    }
+                ],
+                "fingerprint": "1685714533035",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "68",
+                "name": "Google Cloud Region",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "europe-west1"
+                    }
+                ],
+                "fingerprint": "1685714568359",
+                "formatValue": {}
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "CONTAINER_VERSION",
+                "name": "Container Version"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "DEBUG_MODE",
+                "name": "Debug Mode"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "RANDOM_NUMBER",
+                "name": "Random Number"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "CONTAINER_ID",
+                "name": "Container ID"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "EVENT_NAME",
+                "name": "Event Name"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "REQUEST_PATH",
+                "name": "Request Path"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "REQUEST_METHOD",
+                "name": "Request Method"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "CLIENT_NAME",
+                "name": "Client Name"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "type": "QUERY_STRING",
+                "name": "Query String"
+            }
+        ],
+        "fingerprint": "1685714704941",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/1234567890/containers/11111111/versions/0?apiLink=version",
+        "customTemplate": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "templateId": "13",
+                "name": "API Connector",
+                "fingerprint": "1685629613356",
+                "templateData": "___TERMS_OF_SERVICE___\n\nBy creating or modifying this file you agree to Google Tag Manager's Community\nTemplate Gallery Developer Terms of Service available at\nhttps://developers.google.com/tag-manager/gallery-tos (or such other URL as\nGoogle may provide), as modified from time to time.\n\n\n___INFO___\n\n{\n  \"type\": \"TAG\",\n  \"id\": \"cvt_temp_public_id\",\n  \"version\": 1,\n  \"securityGroups\": [],\n  \"displayName\": \"API Connector\",\n  \"categories\": [\n    \"UTILITY\",\n    \"DATA_WAREHOUSING\"\n  ],\n  \"brand\": {\n    \"id\": \"github.com_Ayruz-Datamarketing\",\n    \"displayName\": \"Ayruz-Datamarketing\"\n  },\n  \"description\": \"This tag enables you to send POST requests to API endpoints with JSON body and the desired headers.\",\n  \"containerContexts\": [\n    \"SERVER\"\n  ]\n}\n\n\n___TEMPLATE_PARAMETERS___\n\n[\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"url\",\n    \"displayName\": \"Endpoint URL\",\n    \"simpleValueType\": true,\n    \"valueHint\": \"https://\",\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"CHECKBOX\",\n    \"name\": \"sendAllEventData\",\n    \"checkboxText\": \"Send all event data\",\n    \"simpleValueType\": true,\n    \"help\": \"Add all event data from data layer to request body\"\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestData\",\n    \"displayName\": \"Request Data\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"SIMPLE_TABLE\",\n        \"name\": \"data\",\n        \"displayName\": \"\",\n        \"simpleTableColumns\": [\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Property\",\n            \"name\": \"key\",\n            \"type\": \"TEXT\"\n          },\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Value\",\n            \"name\": \"value\",\n            \"type\": \"TEXT\"\n          }\n        ],\n        \"newRowButtonText\": \"Add Value\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestHeaders\",\n    \"displayName\": \"Request Headers\",\n    \"groupStyle\": \"ZIPPY_CLOSED\",\n    \"subParams\": [\n      {\n        \"type\": \"SIMPLE_TABLE\",\n        \"name\": \"simpleTable1\",\n        \"displayName\": \"\",\n        \"simpleTableColumns\": [\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Key\",\n            \"name\": \"key\",\n            \"type\": \"TEXT\"\n          },\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Value\",\n            \"name\": \"value\",\n            \"type\": \"TEXT\"\n          }\n        ],\n        \"newRowButtonText\": \"Add Header\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"additionalOption\",\n    \"displayName\": \"Additional Options\",\n    \"groupStyle\": \"ZIPPY_CLOSED\",\n    \"subParams\": [\n      {\n        \"type\": \"SELECT\",\n        \"name\": \"requestMethod\",\n        \"displayName\": \"Request Method\",\n        \"macrosInSelect\": false,\n        \"selectItems\": [\n          {\n            \"value\": \"POST\",\n            \"displayValue\": \"POST\"\n          },\n          {\n            \"value\": \"PUT\",\n            \"displayValue\": \"PUT\"\n          }\n        ],\n        \"simpleValueType\": true,\n        \"defaultValue\": \"POST\"\n      },\n      {\n        \"type\": \"TEXT\",\n        \"name\": \"requestTimeout\",\n        \"displayName\": \"Request Timeout\",\n        \"simpleValueType\": true,\n        \"defaultValue\": 3000,\n        \"valueValidators\": [\n          {\n            \"type\": \"NON_NEGATIVE_NUMBER\"\n          }\n        ]\n      }\n    ]\n  }\n]\n\n\n___SANDBOXED_JS_FOR_SERVER___\n\nconst sendHttpRequest = require('sendHttpRequest');\nconst getAllEventData = require('getAllEventData');\nconst makeInteger = require('makeInteger');\nconst makeTableMap = require('makeTableMap');\nconst JSON = require('JSON');\nconst getRequestHeader = require('getRequestHeader');\nconst log = require('logToConsole');\nconst getContainerVersion = require('getContainerVersion');\nconst containerVersion = getContainerVersion();\nconst isDebug = containerVersion.debugMode;\nconst traceId = getRequestHeader('trace-id');\n\nconst postHeaders = {'Content-Type': 'application/json'};\nlet postBodyData = {};\n\nif (data.sendAllEventData) {\n    postBodyData = getAllEventData();\n}\n\nif (data.headers) {\n    for (let key in data.headers) {\n        postHeaders[data.headers[key].key] = data.headers[key].value;\n    }\n}\n\nif (data.data) {\n    let postBodyCustomData = makeTableMap(data.data, 'key', 'value');\n\n    for (let key in postBodyCustomData) {\n        postBodyData[key] = postBodyCustomData[key];\n    }\n}\n\nconst postBody = JSON.stringify(postBodyData);\nlet requestOptions = {headers: postHeaders, method: data.requestMethod};\n\nif (data.requestTimeout) {\n    requestOptions.timeout = makeInteger(data.requestTimeout);\n}\n\nif (isDebug) {\n    log(JSON.stringify({\n        'Name': 'JSON Request',\n        'Type': 'Request',\n        'TraceId': traceId,\n        'RequestMethod': data.requestMethod,\n        'RequestUrl': data.url,\n        'RequestBody': postBodyData,\n    }));\n}\n\nsendHttpRequest(data.url, (statusCode, headers, body) => {\n    if (isDebug) {\n        log(JSON.stringify({\n            'Name': 'JSON Request',\n            'Type': 'Response',\n            'TraceId': traceId,\n            'ResponseStatusCode': statusCode,\n            'ResponseHeaders': headers,\n            'ResponseBody': body,\n        }));\n    }\n\n    if (statusCode >= 200 && statusCode < 300) {\n        data.gtmOnSuccess();\n    } else {\n        data.gtmOnFailure();\n    }\n}, requestOptions, postBody);\n\n\n___SERVER_PERMISSIONS___\n\n[\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"logging\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"environments\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"debug\"\n          }\n        }\n      ]\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"read_event_data\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"eventDataAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"send_http\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"allowedUrls\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"read_request\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"headerWhitelist\",\n          \"value\": {\n            \"type\": 2,\n            \"listItem\": [\n              {\n                \"type\": 3,\n                \"mapKey\": [\n                  {\n                    \"type\": 1,\n                    \"string\": \"headerName\"\n                  }\n                ],\n                \"mapValue\": [\n                  {\n                    \"type\": 1,\n                    \"string\": \"trace-id\"\n                  }\n                ]\n              }\n            ]\n          }\n        },\n        {\n          \"key\": \"headersAllowed\",\n          \"value\": {\n            \"type\": 8,\n            \"boolean\": true\n          }\n        },\n        {\n          \"key\": \"requestAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"specific\"\n          }\n        },\n        {\n          \"key\": \"headerAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"specific\"\n          }\n        },\n        {\n          \"key\": \"queryParameterAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"read_container_data\",\n        \"versionId\": \"1\"\n      },\n      \"param\": []\n    },\n    \"isRequired\": true\n  }\n]\n\n\n",
+                "galleryReference": {
+                    "host": "github.com",
+                    "owner": "Ayruz-Datamarketing",
+                    "repository": "api-connector",
+                    "version": "dcb839f4bca322204eb507b4b8fe3653269df74a",
+                    "signature": "c99fe95854966cbdd07df7dcecc040b1f88f358a6550f56b93d11d9caa52a362"
+                }
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "templateId": "15",
+                "name": "Predicted Value (Vertex using GET)",
+                "fingerprint": "1685629613357",
+                "templateData": "___INFO___\n\n{\n  \"type\": \"MACRO\",\n  \"id\": \"cvt_temp_public_id\",\n  \"version\": 1,\n  \"securityGroups\": [],\n  \"displayName\": \"Predicted Value (Vertex using GET)\",\n  \"description\": \"Variable which obtains the conversion value from an online prediction provided by Vertex AI API. For more information head over to: https://github.com/google/gps-phoebe\",\n  \"containerContexts\": [\n    \"SERVER\"\n  ]\n}\n\n\n___TEMPLATE_PARAMETERS___\n\n[\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"endpointURL\",\n    \"displayName\": \"URL of the endpoint\",\n    \"simpleValueType\": true\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestData\",\n    \"displayName\": \"Request Data\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"SIMPLE_TABLE\",\n        \"name\": \"data\",\n        \"displayName\": \"\",\n        \"simpleTableColumns\": [\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Property\",\n            \"name\": \"key\",\n            \"type\": \"TEXT\"\n          },\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Value\",\n            \"name\": \"value\",\n            \"type\": \"TEXT\"\n          }\n        ],\n        \"newRowButtonText\": \"Add Value\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestOptions\",\n    \"displayName\": \"Request Options\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"TEXT\",\n        \"name\": \"requestTimeout\",\n        \"displayName\": \"Request Timeout in milliseconds\",\n        \"simpleValueType\": true,\n        \"defaultValue\": 3000,\n        \"valueValidators\": [\n          {\n            \"type\": \"NON_NEGATIVE_NUMBER\"\n          }\n        ]\n      }\n    ]\n  }\n]\n\n\n___SANDBOXED_JS_FOR_SERVER___\n\nconst getContainerVersion = require('getContainerVersion');\nconst JSON = require('JSON');\nconst log = require('logToConsole');\nconst makeInteger = require('makeInteger');\nconst promise = require('Promise');\nconst sendHttpGet = require('sendHttpGet');\nconst makeNumber = require('makeNumber');\n\nconst containerVersion = getContainerVersion();\nconst isDebug = containerVersion.debugMode;\nconst postHeaders = {'Content-Type': 'application/json'};\n\nlet requestOptions = {headers: postHeaders,\n                      timeout: makeInteger(data.requestTimeout)};\n\nif (isDebug) {\n    log(JSON.stringify({\n        'Name': 'GET Request',\n        'Type': 'Request',\n        'RequestMethod': 'GET',\n        'RequestUrl': data.endpointURL,\n    }));\n}\n\nreturn sendHttpGet(data.endpointURL, requestOptions).then(success_result => {\n    log(JSON.stringify(success_result));\n    if (isDebug) {\n        log(JSON.stringify({\n            'Name': 'GET Request',\n            'Type': 'Response',\n            'ResponseStatusCode': success_result.statusCode,\n            'ResponseHeaders': success_result.headers,\n            'ResponseBody': success_result.body,\n        }));\n    }\n\n    if (success_result.statusCode >= 200 && success_result.statusCode < 300) {\n        let result_object = JSON.parse(success_result.body)[0][0];\n        log('Setting result to ' + result_object);\n        return result_object;\n    } else {\n        return -1;\n    }  \n}, error_result => {\n   return -1;\n});\n\n\n___SERVER_PERMISSIONS___\n\n[\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"logging\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"environments\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"debug\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"read_container_data\",\n        \"versionId\": \"1\"\n      },\n      \"param\": []\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"send_http\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"allowedUrls\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  }\n]\n\n\n___TESTS___\n\nscenarios: []\n\n\n___NOTES___\n\nCreated on 5/3/2023, 2:21:26 PM\n\n\n"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "templateId": "21",
+                "name": "Phoebe Variable Template",
+                "fingerprint": "1685629613359",
+                "templateData": "___TERMS_OF_SERVICE___\n\nBy creating or modifying this file you agree to Google Tag Manager's Community\nTemplate Gallery Developer Terms of Service available at\nhttps://developers.google.com/tag-manager/gallery-tos (or such other URL as\nGoogle may provide), as modified from time to time.\n\n\n___INFO___\n\n{\n  \"type\": \"MACRO\",\n  \"id\": \"cvt_temp_public_id\",\n  \"version\": 1,\n  \"securityGroups\": [],\n  \"displayName\": \"Phoebe Variable Template\",\n  \"description\": \"Template which obtains the conversion value from an online prediction provided by Vertex AI API\",\n  \"containerContexts\": [\n    \"SERVER\"\n  ]\n}\n\n\n___TEMPLATE_PARAMETERS___\n\n[\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"endpointURL\",\n    \"displayName\": \"URL of the Vertex API endpoint\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"projectNumber\",\n    \"displayName\": \"Google Cloud Project Number hosting the Vertex AI model\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"cloudLocation\",\n    \"displayName\": \"Cloud region where the Vertex AI model is deployed\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"vertexEndpointID\",\n    \"displayName\": \"ID of the Vertex Endpoint to use\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestData\",\n    \"displayName\": \"Request Data\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"SIMPLE_TABLE\",\n        \"name\": \"data\",\n        \"displayName\": \"\",\n        \"simpleTableColumns\": [\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Property\",\n            \"name\": \"key\",\n            \"type\": \"TEXT\"\n          },\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Value\",\n            \"name\": \"value\",\n            \"type\": \"TEXT\"\n          }\n        ],\n        \"newRowButtonText\": \"Add Value\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestOptions\",\n    \"displayName\": \"Request Options\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"TEXT\",\n        \"name\": \"requestTimeout\",\n        \"displayName\": \"Request Timeout in milliseconds\",\n        \"simpleValueType\": true,\n        \"defaultValue\": 3000,\n        \"valueValidators\": [\n          {\n            \"type\": \"NON_NEGATIVE_NUMBER\"\n          }\n        ]\n      }\n    ]\n  }\n]\n\n\n___SANDBOXED_JS_FOR_SERVER___\n\nconst JSON = require('JSON');\nconst log = require('logToConsole');\nconst makeInteger = require('makeInteger');\nconst makeNumber = require('makeNumber');\nconst makeString = require('makeString');\nconst makeTableMap = require('makeTableMap');\nconst promise = require('Promise');\nconst sendHttpRequest = require('sendHttpRequest');\n\nconst strEndsWith = (str, suffix) => {\n  return str.indexOf(suffix, str.length - suffix.length) !== -1;\n};\n\nconst postHeaders = {\n  'Content-Type': 'application/json'\n};\n\nlet postBodyData = {};\n\nif (data.data) {\n  let postBodyCustomData = makeTableMap(data.data, 'key', 'value');\n\n  for (let key in postBodyCustomData) {\n    key = makeString(key);\n    if (strEndsWith(key, '_int')) {\n      const new_key = key.replace('_int', '');\n      postBodyData[new_key] = [makeInteger(postBodyCustomData[key])];\n    } else if (strEndsWith(key, '_num')) {\n      const new_key = key.replace('_num', '');\n      postBodyData[new_key] = [makeNumber(postBodyCustomData[key])];\n    } else {\n      postBodyData[key] = [postBodyCustomData[key]];\n    }\n  }\n}\n\nlet requestOptions = {headers: postHeaders, method: 'POST'};\n\nif (data.requestTimeout) {\n  requestOptions.timeout = makeInteger(data.requestTimeout);\n}\n\nconst postBody = JSON.stringify(postBodyData);\n\nconst fullEndpointURL = data.endpointURL + '/projects/' + data.projectNumber +\n    '/locations/' + data.cloudLocation + '/endpoints/' + data.vertexEndpointID;\n\nlog(\"fullEndpointURL: \" + fullEndpointURL);\n\nreturn sendHttpRequest(fullEndpointURL, requestOptions, postBody)\n    .then(\n        success_result => {\n          log(JSON.stringify(success_result));\n          if (success_result.statusCode >= 200 &&\n              success_result.statusCode < 300) {\n            let result_object = JSON.parse(success_result.body)[0][0];\n            return result_object;\n          } else {\n            return -1;\n          }\n        },\n        error_result => {\n          return -1;\n        });\n\n\n___SERVER_PERMISSIONS___\n\n[\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"send_http\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"allowedUrls\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"logging\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"environments\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"debug\"\n          }\n        }\n      ]\n    },\n    \"isRequired\": true\n  }\n]\n\n\n___TESTS___\n\nscenarios: []\n\n\n___NOTES___\n\nCreated on 5/3/2023, 5:16:28 PM\n\n\n"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "templateId": "26",
+                "name": "IP Randomizer",
+                "fingerprint": "1685629613360",
+                "templateData": "___INFO___\n\n{\n  \"type\": \"CLIENT\",\n  \"id\": \"cvt_temp_public_id\",\n  \"version\": 1,\n  \"securityGroups\": [],\n  \"displayName\": \"IP Randomizer\",\n  \"brand\": {\n    \"id\": \"brand_dummy\",\n    \"displayName\": \"\"\n  },\n  \"description\": \"IP Randomizer for Komputar\",\n  \"containerContexts\": [\n    \"SERVER\"\n  ]\n}\n\n\n___TEMPLATE_PARAMETERS___\n\n[]\n\n\n___SANDBOXED_JS_FOR_SERVER___\n\nconst claimRequest = require('claimRequest');\nconst getCookie = require('getCookieValues');\nconst getRemoteAddress = require('getRemoteAddress');\nconst getRequestHeader = require('getRequestHeader');\nconst isRequestMpv2 = require('isRequestMpv2');\nconst extractEventsFromMpv2 = require('extractEventsFromMpv2');\nconst returnResponse = require('returnResponse');\nconst runContainer = require('runContainer');\nconst setCookie = require('setCookie');\nconst setPixelResponse = require('setPixelResponse');\nconst setResponseHeader = require('setResponseHeader');\nconst generateRandom = require('generateRandom');\nconst logToConsole = require('logToConsole');\n\n// Get User-Agent and IP from incoming request\nconst ua = getRequestHeader('user-agent');\nconst ip = getRemoteAddress();\n\n// Check if request is Measurement Protocol\nif (isRequestMpv2()) {\n  // Claim the request\n  claimRequest();\n  \n  const events = extractEventsFromMpv2();\n  const max = events.length - 1;\n  events.forEach((event, i) => {\n    // Unless the event had IP and user-agent overrides, manually\n    // override them with the IP and user-agent from the request\n    // That way the GA collect call will appear to have originated\n    // from the user's browser / device.\n    if(!event.ip_override && ip) event.ip_override = ip;\n    if(!event.user_agent && ua) event.user_agent = ua;\n    \n    if (event.new_ip && event.new_ip.length) {\n      event.ip_override = event.new_ip;\n    }\n   \n    // Pass the event to a virtual container\n    runContainer(event, () => {\n      \n      if (i === max) {\n        \n        // Rewrite the _ga cookie to avoid Safari expiration.\n        const ga = getCookie('_ga');\n        if (ga && ga.length) {\n          setCookie('_ga', ga[0], {\n            domain: 'auto',\n            'max-age': 63072000,\n            path: '/',\n            secure: true,\n            sameSite: 'lax'\n          });\n        }\n        setPixelResponse();\n        \n        // Make sure no CORS errors pop up with the response\n        const origin = getRequestHeader('Origin');\n\t\tif (origin) {\n          setResponseHeader('Access-Control-Allow-Origin', origin);\n          setResponseHeader('Access-Control-Allow-Credentials', 'true');\n        }\n        returnResponse();\n      }\n    });\n  });\n}\n\n\n___SERVER_PERMISSIONS___\n\n[\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"read_request\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"requestAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        },\n        {\n          \"key\": \"headerAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        },\n        {\n          \"key\": \"queryParameterAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"get_cookies\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"cookieAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"return_response\",\n        \"versionId\": \"1\"\n      },\n      \"param\": []\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"set_cookies\",\n        \"versionId\": \"1\"\n      },\n      \"param\": []\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"access_response\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"writeResponseAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        },\n        {\n          \"key\": \"writeHeaderAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"specific\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"run_container\",\n        \"versionId\": \"1\"\n      },\n      \"param\": []\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"logging\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"environments\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"debug\"\n          }\n        }\n      ]\n    },\n    \"isRequired\": true\n  }\n]\n\n\n___TESTS___\n\nscenarios: []\n\n\n___NOTES___\n\nCreated on 27/03/2023, 14:52:24\n\n\n"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "templateId": "35",
+                "name": "Predicted Value (Vertex)",
+                "fingerprint": "1685629613363",
+                "templateData": "___INFO___\n\n{\n  \"type\": \"MACRO\",\n  \"id\": \"cvt_temp_public_id\",\n  \"version\": 1,\n  \"securityGroups\": [],\n  \"displayName\": \"Predicted Value (Vertex)\",\n  \"description\": \"Variable which obtains the conversion value from an online prediction provided by Vertex AI API. For more information head over to: https://github.com/google/gps-phoebe\",\n  \"containerContexts\": [\n    \"SERVER\"\n  ]\n}\n\n\n___TEMPLATE_PARAMETERS___\n\n[\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"endpointURL\",\n    \"displayName\": \"URL of the Vertex API endpoint\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"projectNumber\",\n    \"displayName\": \"Google Cloud Project Number hosting the Vertex AI model\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"cloudLocation\",\n    \"displayName\": \"Cloud region where the Vertex AI model is deployed\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"vertexEndpointID\",\n    \"displayName\": \"ID of the Vertex Endpoint to use\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestData\",\n    \"displayName\": \"Request Data\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"SIMPLE_TABLE\",\n        \"name\": \"data\",\n        \"displayName\": \"\",\n        \"simpleTableColumns\": [\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Property\",\n            \"name\": \"key\",\n            \"type\": \"TEXT\"\n          },\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Value\",\n            \"name\": \"value\",\n            \"type\": \"TEXT\"\n          }\n        ],\n        \"newRowButtonText\": \"Add Value\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestOptions\",\n    \"displayName\": \"Request Options\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"TEXT\",\n        \"name\": \"requestTimeout\",\n        \"displayName\": \"Request Timeout in milliseconds\",\n        \"simpleValueType\": true,\n        \"defaultValue\": 3000,\n        \"valueValidators\": [\n          {\n            \"type\": \"NON_NEGATIVE_NUMBER\"\n          }\n        ]\n      }\n    ]\n  }\n]\n\n\n___SANDBOXED_JS_FOR_SERVER___\n\nconst JSON = require('JSON');\nconst log = require('logToConsole');\nconst makeInteger = require('makeInteger');\nconst makeNumber = require('makeNumber');\nconst makeString = require('makeString');\nconst makeTableMap = require('makeTableMap');\nconst promise = require('Promise');\nconst sendHttpRequest = require('sendHttpRequest');\n\nconst strEndsWith = (str, suffix) => {\n  return str.indexOf(suffix, str.length - suffix.length) !== -1;\n};\n\nconst postHeaders = {\n  'Content-Type': 'application/json'\n};\n\nlet postBodyData = {};\n\nif (data.data) {\n  let postBodyCustomData = makeTableMap(data.data, 'key', 'value');\n\n  for (let key in postBodyCustomData) {\n    key = makeString(key);\n    if (strEndsWith(key, '_int')) {\n      const new_key = key.replace('_int', '');\n      postBodyData[new_key] = [makeInteger(postBodyCustomData[key])];\n    } else if (strEndsWith(key, '_num')) {\n      const new_key = key.replace('_num', '');\n      postBodyData[new_key] = [makeNumber(postBodyCustomData[key])];\n    } else {\n      postBodyData[key] = [postBodyCustomData[key]];\n    }\n  }\n}\n\nlet requestOptions = {headers: postHeaders, method: 'POST'};\n\nif (data.requestTimeout) {\n  requestOptions.timeout = makeInteger(data.requestTimeout);\n}\n\nconst postBody = JSON.stringify(postBodyData);\n\nconst fullEndpointURL = data.endpointURL + '/projects/' + data.projectNumber +\n    '/locations/' + data.cloudLocation + '/endpoints/' + data.vertexEndpointID;\n\nlog(\"fullEndpointURL: \" + fullEndpointURL);\n\nreturn sendHttpRequest(fullEndpointURL, requestOptions, postBody)\n    .then(\n        success_result => {\n          log(JSON.stringify(success_result));\n          if (success_result.statusCode >= 200 &&\n              success_result.statusCode < 300) {\n            let result_object = JSON.parse(success_result.body)[0][0];\n            return result_object;\n          } else {\n            return -1;\n          }\n        },\n        error_result => {\n          return -1;\n        });\n\n\n___SERVER_PERMISSIONS___\n\n[\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"send_http\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"allowedUrls\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"logging\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"environments\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"debug\"\n          }\n        }\n      ]\n    },\n    \"isRequired\": true\n  }\n]\n\n\n___TESTS___\n\nscenarios: []\n\n\n___NOTES___\n\nCreated on 5/3/2023, 5:16:28 PM\n\n\n"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "templateId": "50",
+                "name": "Predicted Value (Vertex with debug)",
+                "fingerprint": "1685629613367",
+                "templateData": "___INFO___\n\n{\n  \"type\": \"MACRO\",\n  \"id\": \"cvt_temp_public_id\",\n  \"version\": 1,\n  \"securityGroups\": [],\n  \"displayName\": \"Predicted Value (Vertex with debug)\",\n  \"description\": \"Variable which obtains the conversion value from an online prediction provided by Vertex AI API. For more information head over to: https://github.com/google/gps-phoebe\",\n  \"containerContexts\": [\n    \"SERVER\"\n  ]\n}\n\n\n___TEMPLATE_PARAMETERS___\n\n[\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"endpointURL\",\n    \"displayName\": \"URL of the endpoint\",\n    \"simpleValueType\": true\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestData\",\n    \"displayName\": \"Request Data\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"SIMPLE_TABLE\",\n        \"name\": \"data\",\n        \"displayName\": \"\",\n        \"simpleTableColumns\": [\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Property\",\n            \"name\": \"key\",\n            \"type\": \"TEXT\"\n          },\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Value\",\n            \"name\": \"value\",\n            \"type\": \"TEXT\"\n          }\n        ],\n        \"newRowButtonText\": \"Add Value\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestOptions\",\n    \"displayName\": \"Request Options\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"TEXT\",\n        \"name\": \"requestTimeout\",\n        \"displayName\": \"Request Timeout in milliseconds\",\n        \"simpleValueType\": true,\n        \"defaultValue\": 3000,\n        \"valueValidators\": [\n          {\n            \"type\": \"NON_NEGATIVE_NUMBER\"\n          }\n        ]\n      }\n    ]\n  }\n]\n\n\n___SANDBOXED_JS_FOR_SERVER___\n\nconst getContainerVersion = require('getContainerVersion');\nconst JSON = require('JSON');\nconst log = require('logToConsole');\nconst makeInteger = require('makeInteger');\nconst makeTableMap = require('makeTableMap');\nconst promise = require('Promise');\nconst sendHttpRequest = require('sendHttpRequest');\nconst makeNumber = require('makeNumber');\n\nconst containerVersion = getContainerVersion();\nconst isDebug = containerVersion.debugMode;\nconst postHeaders = {'Content-Type': 'application/json'};\n\nlet postBodyData = {};\n\nif (data.data) {\n    let postBodyCustomData = makeTableMap(data.data, 'key', 'value');\n\n    for (let key in postBodyCustomData) {\n      postBodyData[key] = [postBodyCustomData[key]];\n    }\n    postBodyData.purchase_revenue_in_usd = makeNumber(postBodyCustomData.purchase_revenue_in_usd);\n    postBodyData.total_item_quantity = makeNumber(postBodyCustomData.total_item_quantity);\n}\n\nconst postBody = JSON.stringify(postBodyData);\nlet requestOptions = {headers: postHeaders, method: 'POST'};\n\nif (data.requestTimeout) {\n    requestOptions.timeout = makeInteger(data.requestTimeout);\n}\n\nif (isDebug) {\n    log(JSON.stringify({\n        'Name': 'JSON Request',\n        'Type': 'Request',\n        'RequestMethod': 'POST',\n        'RequestUrl': data.endpointURL,\n        'RequestBody': postBodyData,\n    }));\n}\n\nreturn sendHttpRequest(data.endpointURL, requestOptions, postBody).then(success_result => {\n    log(JSON.stringify(success_result));\n    if (isDebug) {\n        log(JSON.stringify({\n            'Name': 'JSON Request',\n            'Type': 'Response',\n            'ResponseStatusCode': success_result.statusCode,\n            'ResponseHeaders': success_result.headers,\n            'ResponseBody': success_result.body,\n        }));\n    }\n\n    if (success_result.statusCode >= 200 && success_result.statusCode < 300) {\n        let result_object = JSON.parse(success_result.body)[0][0];\n        log('Setting result to ' + result_object);\n        return result_object;\n    } else {\n        return -1;\n    }  \n}, error_result => {\n   return -1;\n});\n\n\n___SERVER_PERMISSIONS___\n\n[\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"logging\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"environments\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"debug\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"read_container_data\",\n        \"versionId\": \"1\"\n      },\n      \"param\": []\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"send_http\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"allowedUrls\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  }\n]\n\n\n___TESTS___\n\nscenarios: []\n\n\n___NOTES___\n\n\n\n\n"
+            }
+        ],
+        "client": [
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "clientId": "1",
+                "name": "GA4",
+                "type": "gaaw_client",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "activateDefaultPaths",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieManagement",
+                        "value": "server"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieName",
+                        "value": "FPID"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieDomain",
+                        "value": "auto"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookiePath",
+                        "value": "/"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieMaxAgeInSec",
+                        "value": "63072000"
+                    }
+                ],
+                "fingerprint": "1685612638313"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "clientId": "40",
+                "name": "Universal Analytics",
+                "type": "ua_client",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieDomain",
+                        "value": "auto"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieMaxAgeInSec",
+                        "value": "63072000"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "activateDefaultPaths",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookiePath",
+                        "value": "/"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieManagement",
+                        "value": "server"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieName",
+                        "value": "FPID"
+                    }
+                ],
+                "fingerprint": "1685629613364"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "clientId": "45",
+                "name": "IP Randomizer",
+                "type": "cvt_11111111_26",
+                "priority": 100,
+                "fingerprint": "1685629613366"
+            }
+        ]
+    }
+}
