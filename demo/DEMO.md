@@ -23,9 +23,9 @@ this document and follow the [main one](../README.md).
     deployed.
 -   A Google Tag Manager Web Container created (no need to have anything
     configured yet).
-    [GTM Boilerplate](https://github.com/gtech-professional-services/gtm-boilerplate)
-    deployed and configured to use the server side tagging server. You can find
-    more instructions
+-   [GTM Boilerplate](https://github.com/gtech-professional-services/gtm-boilerplate)
+    deployed and configured to use the Google Tag Manager Web container.
+    You can find the detailed instructions
     [here](https://github.com/gtech-professional-services/gtm-boilerplate/blob/main/website/README.md#guided-deployment).
 -   A local environment with [Cloud SDK](https://cloud.google.com/sdk) and
     [terraform](https://www.terraform.io/) installed. We recommend using
@@ -42,17 +42,17 @@ git clone https://github.com/google/gps-phoebe
 cd gps-phoebe/demo
 ```
 
-1.  Open the file `terraform.tfvars` and provide the appropriate values for each
+2.  Open the file `terraform.tfvars` and provide the appropriate values for each
     field. Our recommendation for the deployment region is to use the same as
     your server side tagging server, as that will reduce the network latency.
 
-2.  Initialize the terraform environment.
+3.  Initialize the terraform environment.
 
 ```sh
 terraform init
 ```
 
-1.  Start the model deployment. Make sure to follow the prompts to confirm the
+4.  Start the model deployment. Make sure to follow the prompts to confirm the
     operation (you need to enter yes when prompted if you agree with the
     changes, otherwise the script will exit).
 
@@ -60,7 +60,7 @@ terraform init
 terraform apply
 ```
 
-1.  Deploy the proxy application. For the demo environment, we recommend using
+5.  Deploy the proxy application. For the demo environment, we recommend using
     the cloud run version. Execute the following commands to deploy it.
 
 ```sh
@@ -70,7 +70,7 @@ gcloud run deploy phoebe-proxy-app --source ../proxy_app/cloud_run # adapt to th
 Take note of the Service URL (or Proxy App URL) shown in the console as you will
 use it in the next section.
 
-1.  Configure Tag Manager
+6.  Configure Tag Manager
 
 Download the template files from your browser:
 
