@@ -5,7 +5,7 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "displayName": "Predicted Value (Vertex)",
+  "displayName": "Vertex Prediction",
   "description": "Variable which obtains the conversion value from an online prediction provided by Vertex AI API. For more information head over to: https://github.com/google/gps-phoebe",
   "containerContexts": [
     "SERVER"
@@ -19,7 +19,7 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "TEXT",
     "name": "endpointURL",
-    "displayName": "URL of the Vertex API endpoint",
+    "displayName": "URL of the Proxy App endpoint",
     "simpleValueType": true,
     "valueValidators": [
       {

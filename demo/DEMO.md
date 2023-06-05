@@ -97,10 +97,6 @@ the right values:
     cloud project.
 -   `Google Cloud Region`: The region you used for the deployment above.
 
-The Id of the Vertex endpoint you need to use in the Phoebe Prediction variable
-is `demo-model-endpoint`, and the project number is shown in the
-[home dashboard](https://console.cloud.google.com/home/dashboard) of your cloud
-project.
 
 ## Disclaimers
 
