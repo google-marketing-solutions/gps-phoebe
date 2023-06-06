@@ -14,5 +14,5 @@
 
 project_id = ""
 region = "europe-west1"
-bucket_name = "gps-phoebe-demo"
+bucket_name = ""
 serving_container_image = "us-docker.pkg.dev/vertex-ai-restricted/prediction/tf_opt-cpu.2-11:latest"
