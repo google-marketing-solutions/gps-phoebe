@@ -75,7 +75,7 @@ resource "google_storage_bucket_object" "sample-file" {
 
 module "vertex-model-upload" {
   source  = "terraform-google-modules/gcloud/google"
-  version = "~> 2.0"
+  version = "~> 3.1.2"
 
   platform = "linux"
   additional_components = ["beta"]
@@ -85,7 +85,7 @@ module "vertex-model-upload" {
   destroy_cmd_entrypoint = "gcloud"
   destroy_cmd_body       = "ai models delete demo-model --project=${var.project_id} --region=${var.region}"
 
-  depends_on = [google_project_service.aiplatform]
+  module_depends_on = [google_project_service.aiplatform]
 }
 
 resource "google_vertex_ai_endpoint" "demo-model-endpoint" {
@@ -99,7 +99,7 @@ resource "google_vertex_ai_endpoint" "demo-model-endpoint" {
 
 module "vertex-model-deploy" {
   source  = "terraform-google-modules/gcloud/google"
-  version = "~> 2.0"
+  version = "~> 3.1.2"
 
   platform = "linux"
   additional_components = ["beta"]
@@ -109,5 +109,5 @@ module "vertex-model-deploy" {
   destroy_cmd_entrypoint = "gcloud"
   destroy_cmd_body       = "ai endpoints undeploy-model models demo-model-endpoint --project=${var.project_id} --region=${var.region}--deployed-model-id='demo-model'"
 
-  depends_on = [google_vertex_ai_endpoint.demo-model-endpoint]
+  module_depends_on = [google_vertex_ai_endpoint.demo-model-endpoint]
 }
