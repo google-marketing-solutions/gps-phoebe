@@ -673,7 +673,7 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "value",
-                                        "value": "shoes"
+                                        "value": "{{Item Types}}"
                                     }
                                 ]
                             },
@@ -763,7 +763,7 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "value",
-                                        "value": "100.25"
+                                        "value": "{{Transaction Value}}"
                                     }
                                 ]
                             },
@@ -778,7 +778,7 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "value",
-                                        "value": "4"
+                                        "value": "{{Total Items}}"
                                     }
                                 ]
                             },
@@ -1194,6 +1194,24 @@
                 ],
                 "fingerprint": "1685714568359",
                 "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "70",
+                "name": "Total Items",
+                "type": "cvt_11111111_80",
+                "fingerprint": "1687181704905",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "variableId": "71",
+                "name": "Item Types",
+                "type": "cvt_11111111_82",
+                "fingerprint": "1687182275073",
+                "formatValue": {}
             }
         ],
         "builtInVariable": [
@@ -1262,6 +1280,22 @@
                 "name": "Vertex Prediction",
                 "fingerprint": "1685629613363",
                 "templateData": "___INFO___\n\n{\n  \"type\": \"MACRO\",\n  \"id\": \"cvt_temp_public_id\",\n  \"version\": 1,\n  \"securityGroups\": [],\n  \"displayName\": \"Vertex Prediction\",\n  \"description\": \"Variable which obtains the conversion value from an online prediction provided by Vertex AI API. For more information head over to: https://github.com/google/gps-phoebe\",\n  \"containerContexts\": [\n    \"SERVER\"\n  ]\n}\n\n\n___TEMPLATE_PARAMETERS___\n\n[\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"endpointURL\",\n    \"displayName\": \"URL of the Proxy App endpoint\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"projectNumber\",\n    \"displayName\": \"Google Cloud Project Number hosting the Vertex AI model\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"cloudLocation\",\n    \"displayName\": \"Cloud region where the Vertex AI model is deployed\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"TEXT\",\n    \"name\": \"vertexEndpointID\",\n    \"displayName\": \"ID of the Vertex Endpoint to use\",\n    \"simpleValueType\": true,\n    \"valueValidators\": [\n      {\n        \"type\": \"NON_EMPTY\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestData\",\n    \"displayName\": \"Request Data\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"SIMPLE_TABLE\",\n        \"name\": \"data\",\n        \"displayName\": \"\",\n        \"simpleTableColumns\": [\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Property\",\n            \"name\": \"key\",\n            \"type\": \"TEXT\"\n          },\n          {\n            \"defaultValue\": \"\",\n            \"displayName\": \"Value\",\n            \"name\": \"value\",\n            \"type\": \"TEXT\"\n          }\n        ],\n        \"newRowButtonText\": \"Add Value\"\n      }\n    ]\n  },\n  {\n    \"type\": \"GROUP\",\n    \"name\": \"requestOptions\",\n    \"displayName\": \"Request Options\",\n    \"groupStyle\": \"ZIPPY_OPEN\",\n    \"subParams\": [\n      {\n        \"type\": \"TEXT\",\n        \"name\": \"requestTimeout\",\n        \"displayName\": \"Request Timeout in milliseconds\",\n        \"simpleValueType\": true,\n        \"defaultValue\": 3000,\n        \"valueValidators\": [\n          {\n            \"type\": \"NON_NEGATIVE_NUMBER\"\n          }\n        ]\n      }\n    ]\n  }\n]\n\n\n___SANDBOXED_JS_FOR_SERVER___\n\nconst JSON = require('JSON');\nconst log = require('logToConsole');\nconst makeInteger = require('makeInteger');\nconst makeNumber = require('makeNumber');\nconst makeString = require('makeString');\nconst makeTableMap = require('makeTableMap');\nconst promise = require('Promise');\nconst sendHttpRequest = require('sendHttpRequest');\n\nconst strEndsWith = (str, suffix) => {\n  return str.indexOf(suffix, str.length - suffix.length) !== -1;\n};\n\nconst postHeaders = {\n  'Content-Type': 'application/json'\n};\n\nlet postBodyData = {};\n\nif (data.data) {\n  let postBodyCustomData = makeTableMap(data.data, 'key', 'value');\n\n  for (let key in postBodyCustomData) {\n    key = makeString(key);\n    if (strEndsWith(key, '_int')) {\n      const new_key = key.replace('_int', '');\n      postBodyData[new_key] = [makeInteger(postBodyCustomData[key])];\n    } else if (strEndsWith(key, '_num')) {\n      const new_key = key.replace('_num', '');\n      postBodyData[new_key] = [makeNumber(postBodyCustomData[key])];\n    } else {\n      postBodyData[key] = [postBodyCustomData[key]];\n    }\n  }\n}\n\nlet requestOptions = {headers: postHeaders, method: 'POST'};\n\nif (data.requestTimeout) {\n  requestOptions.timeout = makeInteger(data.requestTimeout);\n}\n\nconst postBody = JSON.stringify(postBodyData);\n\nconst fullEndpointURL = data.endpointURL + '/projects/' + data.projectNumber +\n    '/locations/' + data.cloudLocation + '/endpoints/' + data.vertexEndpointID;\n\nlog(\"fullEndpointURL: \" + fullEndpointURL);\n\nreturn sendHttpRequest(fullEndpointURL, requestOptions, postBody)\n    .then(\n        success_result => {\n          log(JSON.stringify(success_result));\n          if (success_result.statusCode >= 200 &&\n              success_result.statusCode < 300) {\n            let result_object = JSON.parse(success_result.body)[0][0];\n            return result_object;\n          } else {\n            return -1;\n          }\n        },\n        error_result => {\n          return -1;\n        });\n\n\n___SERVER_PERMISSIONS___\n\n[\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"send_http\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"allowedUrls\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"any\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"logging\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"environments\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"debug\"\n          }\n        }\n      ]\n    },\n    \"isRequired\": true\n  }\n]\n\n\n___TESTS___\n\nscenarios: []\n\n\n___NOTES___\n\nCreated on 5/3/2023, 5:16:28 PM\n\n\n"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "templateId": "80",
+                "name": "Total Items",
+                "fingerprint": "1687182254671",
+                "templateData": "___INFO___\n\n{\n  \"type\": \"MACRO\",\n  \"id\": \"cvt_temp_public_id\",\n  \"version\": 1,\n  \"securityGroups\": [],\n  \"displayName\": \"Total Items\",\n  \"description\": \"Sums all items and returns the total quantity in the cart.\",\n  \"containerContexts\": [\n    \"SERVER\"\n  ]\n}\n\n\n___TEMPLATE_PARAMETERS___\n\n[]\n\n\n___SANDBOXED_JS_FOR_SERVER___\n\n/**\n * Copyright 2023 Google LLC\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *     https://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\nconst getEventData = require(\"getEventData\");\nconst logToConsole = require(\"logToConsole\");\n\nconst items = getEventData(\"items\");\nlogToConsole('items', items);\nlet totalItems = 0;\nfor (const item of items) {\n  totalItems += item.quantity;\n}\nreturn totalItems;\n\n\n___SERVER_PERMISSIONS___\n\n[\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"logging\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"environments\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"debug\"\n          }\n        }\n      ]\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"read_event_data\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"keyPatterns\",\n          \"value\": {\n            \"type\": 2,\n            \"listItem\": [\n              {\n                \"type\": 1,\n                \"string\": \"items\"\n              }\n            ]\n          }\n        },\n        {\n          \"key\": \"eventDataAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"specific\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  }\n]\n\n\n___TESTS___\n\nscenarios: []\n\n\n___NOTES___\n\n\n\n\n"
+            },
+            {
+                "accountId": "1234567890",
+                "containerId": "11111111",
+                "templateId": "82",
+                "name": "Item Types",
+                "fingerprint": "1687182220635",
+                "templateData": "___INFO___\n\n{\n  \"type\": \"MACRO\",\n  \"id\": \"cvt_temp_public_id\",\n  \"version\": 1,\n  \"securityGroups\": [],\n  \"displayName\": \"Item Types\",\n  \"description\": \"Generates a string with the ids of the products in the cart.\",\n  \"containerContexts\": [\n    \"SERVER\"\n  ]\n}\n\n\n___TEMPLATE_PARAMETERS___\n\n[]\n\n\n___SANDBOXED_JS_FOR_SERVER___\n\n/**\n * Copyright 2023 Google LLC\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *     https://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\nconst getEventData = require(\"getEventData\");\nconst logToConsole = require(\"logToConsole\");\n\nconst items = getEventData(\"items\");\nlogToConsole('items', items);\nlet ids = [];\nfor (const item of items) {\n  ids.push(item.item_id);\n}\nreturn ids.join(\",\");\n\n\n___SERVER_PERMISSIONS___\n\n[\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"logging\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"environments\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"debug\"\n          }\n        }\n      ]\n    },\n    \"isRequired\": true\n  },\n  {\n    \"instance\": {\n      \"key\": {\n        \"publicId\": \"read_event_data\",\n        \"versionId\": \"1\"\n      },\n      \"param\": [\n        {\n          \"key\": \"keyPatterns\",\n          \"value\": {\n            \"type\": 2,\n            \"listItem\": [\n              {\n                \"type\": 1,\n                \"string\": \"items\"\n              }\n            ]\n          }\n        },\n        {\n          \"key\": \"eventDataAccess\",\n          \"value\": {\n            \"type\": 1,\n            \"string\": \"specific\"\n          }\n        }\n      ]\n    },\n    \"clientAnnotations\": {\n      \"isEditedByUser\": true\n    },\n    \"isRequired\": true\n  }\n]\n\n\n___TESTS___\n\nscenarios: []\n\n\n___NOTES___\n\n\n\n\n"
             }
         ],
         "client": [

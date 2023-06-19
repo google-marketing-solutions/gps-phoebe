@@ -107,7 +107,7 @@ module "vertex-model-deploy" {
   create_cmd_entrypoint  = "gcloud"
   create_cmd_body        = "ai endpoints deploy-model demo-model-endpoint --project=${var.project_id} --region=${var.region} --display-name='demo-model' --model='demo-model'"
   destroy_cmd_entrypoint = "gcloud"
-  destroy_cmd_body       = "ai endpoints undeploy-model models demo-model-endpoint --project=${var.project_id} --region=${var.region}--deployed-model-id='demo-model'"
+  destroy_cmd_body       = "ai endpoints undeploy-model demo-model-endpoint --project=${var.project_id} --region=${var.region} --deployed-model-id=$(gcloud ai models describe demo-model | grep deployedModelId | head -1 | sed -E \"s/^[^']+'([^']+)'/\\1/\")"
 
   module_depends_on = [google_vertex_ai_endpoint.demo-model-endpoint]
 }
