@@ -169,7 +169,8 @@ return sendHttpRequest(fullEndpointURL, requestOptions, postBody)
           if (success_result.statusCode >= 200 &&
               success_result.statusCode < 300) {
             let result_object = JSON.parse(success_result.body)[0][0];
-            return result_object;
+            // Cast to string as a numeric zero causes sGTM to default to revenue value
+            return makeString(result_object);
           } else {
             return -1;
           }
