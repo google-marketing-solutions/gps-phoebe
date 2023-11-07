@@ -29,7 +29,7 @@ from google.protobuf import struct_pb2
 def get_prediction(
     project: str,
     endpoint_id: str,
-    instance_dict: Dict,
+    instances: Dict,
     location: str,
 ):
   """Calls a Vertex AI endpoint and returns a prediction based on input data.
@@ -37,7 +37,8 @@ def get_prediction(
   Args:
     project: the GCP project of the endpoint.
     endpoint_id: the endpoint ID.
-    instance_dict: the input dictionary to pass to the endpoint.
+    instances: the input dictionaries to pass to the endpoint. It can be either
+      single instance of type dict or a list of instances.
     location: the region where the endpoint is located.
 
   Returns:
@@ -47,8 +48,10 @@ def get_prediction(
   client = aiplatform.gapic.PredictionServiceClient(
       client_options=client_options
   )
-  instance = json_format.ParseDict(instance_dict, struct_pb2.Value())
-  instances = [instance]
+  instances = instances if isinstance(instances, list) else [instances]
+  instances = [
+    json_format.ParseDict(instance_dict, struct_pb2.Value()) for instance_dict in instances
+  ]
   parameters_dict = {}
   parameters = json_format.ParseDict(parameters_dict, struct_pb2.Value())
   endpoint = client.endpoint_path(
@@ -80,7 +83,7 @@ def predict(project_number, location, endpoint_id):
       project=project_number,
       endpoint_id=endpoint_id,
       location=location,
-      instance_dict=request.json,
+      instances=request.json,
   )
   return results
 

@@ -113,12 +113,14 @@ ___TEMPLATE_PARAMETERS___
 
 ___SANDBOXED_JS_FOR_SERVER___
 
+const getEventData = require("getEventData");
 const JSON = require('JSON');
 const log = require('logToConsole');
 const makeInteger = require('makeInteger');
 const makeNumber = require('makeNumber');
 const makeString = require('makeString');
 const makeTableMap = require('makeTableMap');
+const object = require('Object');
 const promise = require('Promise');
 const sendHttpRequest = require('sendHttpRequest');
 
@@ -126,28 +128,55 @@ const strEndsWith = (str, suffix) => {
   return str.indexOf(suffix, str.length - suffix.length) !== -1;
 };
 
+// set to true for eCommerce Example
+let isEcommerce = true;
+
 const postHeaders = {
   'Content-Type': 'application/json'
 };
 
-let postBodyData = {};
 
+
+let globalValues = {};
 if (data.data) {
-  let postBodyCustomData = makeTableMap(data.data, 'key', 'value');
-
-  for (let key in postBodyCustomData) {
+  let customData = makeTableMap(data.data, 'key', 'value');
+  for (let key in customData) {
     key = makeString(key);
     if (strEndsWith(key, '_int')) {
       const new_key = key.replace('_int', '');
-      postBodyData[new_key] = [makeInteger(postBodyCustomData[key])];
+      globalValues[new_key] = makeInteger(customData[key]);
     } else if (strEndsWith(key, '_num')) {
       const new_key = key.replace('_num', '');
-      postBodyData[new_key] = [makeNumber(postBodyCustomData[key])];
+      globalValues[new_key] = makeNumber(customData[key]);
     } else {
-      postBodyData[key] = [postBodyCustomData[key]];
+      globalValues[key] = customData[key];
     }
   }
 }
+
+let postBodyData = {}; 
+if (isEcommerce == true) {
+  postBodyData = [];
+  const items = getEventData("items");
+  let ids = [];
+  let itemCount = 0;
+  for (const item of items) {
+    let instance = {};
+    for (let key in item) {
+      instance[key] = item[key];
+    }
+    for (let key in globalValues) {
+     instance[key] = globalValues[key]; 
+    }
+    itemCount++;
+    instance.index = itemCount;
+    postBodyData.push(instance);
+  }
+}
+else {
+  postBodyData = [globalValues];
+}
+
 
 let requestOptions = {headers: postHeaders, method: 'POST'};
 
@@ -168,9 +197,12 @@ return sendHttpRequest(fullEndpointURL, requestOptions, postBody)
           log(JSON.stringify(success_result));
           if (success_result.statusCode >= 200 &&
               success_result.statusCode < 300) {
-            let result_object = JSON.parse(success_result.body)[0][0];
-            // Cast to string as a numeric zero causes sGTM to default to revenue value
-            return makeString(result_object);
+            let result_object = JSON.parse(success_result.body);
+            let sum = 0;
+            result_object.forEach( num => {
+              sum += num;
+            });
+            return sum;
           } else {
             return -1;
           }
@@ -178,7 +210,6 @@ return sendHttpRequest(fullEndpointURL, requestOptions, postBody)
         error_result => {
           return -1;
         });
-
 
 ___SERVER_PERMISSIONS___
 
@@ -219,6 +250,39 @@ ___SERVER_PERMISSIONS___
           }
         }
       ]
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "read_event_data",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "keyPatterns",
+          "value": {
+            "type": 2,
+            "listItem": [
+              {
+                "type": 1,
+                "string": "items"
+              }
+            ]
+          }
+        },
+        {
+          "key": "eventDataAccess",
+          "value": {
+            "type": 1,
+            "string": "specific"
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
     },
     "isRequired": true
   }
