@@ -202,7 +202,7 @@ return sendHttpRequest(fullEndpointURL, requestOptions, postBody)
             result_object.forEach( num => {
               sum += num;
             });
-            return sum;
+            return makeString(sum);
           } else {
             return -1;
           }
