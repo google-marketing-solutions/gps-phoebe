@@ -76,11 +76,6 @@ If you are not using cloud shell, you must install the
 You need to use a proxy application to call a Vertex AI endpoint, as currently
 server-side Tag Manager does not support outbound authenticated requests.
 
-There are two deployment options: App Engine and Cloud Run. The functionality of
-both is identical, but Cloud Run provides a bit more flexibility as you can
-deploy it in the same project along with other applications running on Cloud
-Run.
-
 Before proceeding, you need to select the project the Google Cloud project with
 the following command (substitute PROJECT_ID with the correct project id):
 
@@ -88,19 +83,7 @@ the following command (substitute PROJECT_ID with the correct project id):
 gcloud config set project PROJECT_ID
 ```
 
-#### Cloud Run
-
 Execute the following command to deploy the proxy application to Cloud Run:
-
-```sh
-cd proxy_app/app_engine
-gcloud app init
-gcloud app deploy
-```
-
-#### App Engine
-
-Execute the following command to deploy the proxy application to App Engine:
 
 ```sh
 cd proxy_app/cloud_run
@@ -146,9 +129,7 @@ Then, fill in the details of your environment in the configuration screen:
 
 Remember to append the Proxy App URL with the `/predict` suffix. Example:
 `https://my-proxy-ap.ew.r.appspot.com/predict`. You can find the URL to use in
-either your [App Engine](https://console.cloud.google.com/appengine/services) or
-[Cloud Run](https://console.cloud.google.com/run) console, depending on the
-selection you made before.
+your [Cloud Run](https://console.cloud.google.com/run) console.
 
 Apart from the required fields, you need to provide the request data that will
 be sent to the Vertex AI endpoint through the Proxy App. This data would depend
