@@ -5,7 +5,7 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "displayName": "Vertex Prediction",
+  "displayName": "VertexAI Prediction",
   "description": "Variable which obtains the conversion value from an online prediction provided by Vertex AI API. For more information head over to: https://github.com/google/gps-phoebe",
   "containerContexts": [
     "SERVER"
@@ -16,17 +16,6 @@ ___INFO___
 ___TEMPLATE_PARAMETERS___
 
 [
-  {
-    "type": "TEXT",
-    "name": "endpointURL",
-    "displayName": "URL of the Proxy App endpoint",
-    "simpleValueType": true,
-    "valueValidators": [
-      {
-        "type": "NON_EMPTY"
-      }
-    ]
-  },
   {
     "type": "TEXT",
     "name": "projectNumber",
@@ -89,54 +78,66 @@ ___TEMPLATE_PARAMETERS___
     ]
   },
   {
-    "type": "GROUP",
-    "name": "requestOptions",
-    "displayName": "Request Options",
-    "groupStyle": "ZIPPY_OPEN",
-    "subParams": [
-      {
-        "type": "TEXT",
-        "name": "requestTimeout",
-        "displayName": "Request Timeout in milliseconds",
-        "simpleValueType": true,
-        "defaultValue": 3000,
-        "valueValidators": [
-          {
-            "type": "NON_NEGATIVE_NUMBER"
-          }
-        ]
-      }
-    ]
+    "type": "TEXT",
+    "name": "defaultValueOnError",
+    "displayName": "The value that should be returned if an error occurs",
+    "simpleValueType": true,
+    "defaultValue": 0
   }
 ]
 
 
 ___SANDBOXED_JS_FOR_SERVER___
 
-const getEventData = require("getEventData");
-const JSON = require('JSON');
-const log = require('logToConsole');
-const makeInteger = require('makeInteger');
-const makeNumber = require('makeNumber');
-const makeString = require('makeString');
-const makeTableMap = require('makeTableMap');
-const object = require('Object');
-const promise = require('Promise');
-const sendHttpRequest = require('sendHttpRequest');
+// Copyright 2024 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
 
+/**
+ * @fileoverview sGTM variable tag that uses information in the datalayer to
+ * make a call to VertexAI, to determine the conversion value.
+ * @version 2.0.0
+ */
+const getEventData = require("getEventData");
+const getGoogleAuth = require("getGoogleAuth");
+const JSON = require("JSON");
+const logToConsole = require("logToConsole");
+const makeInteger = require("makeInteger");
+const makeNumber = require("makeNumber");
+const makeString = require("makeString");
+const makeTableMap = require("makeTableMap");
+const sendHttpRequest = require("sendHttpRequest");
+
+// Build the URL for Vertex AI.
+const url = "https://" + data.cloudLocation +
+  "-aiplatform.googleapis.com/v1/projects/" + data.projectNumber +
+  "/locations/" + data.cloudLocation + "/endpoints/" + data.vertexEndpointID +
+  ":predict";
+logToConsole(url);
+
+// Get Google credentials from the service account running the container.
+const auth = getGoogleAuth({
+  scopes: ["https://www.googleapis.com/auth/cloud-platform"]
+});
+
+// Helper function for determining if the string starts with a suffix.
 const strEndsWith = (str, suffix) => {
   return str.indexOf(suffix, str.length - suffix.length) !== -1;
 };
 
-// set to true for eCommerce Example
-let isEcommerce = true;
-
-const postHeaders = {
-  'Content-Type': 'application/json'
-};
-
-
-
+// Build an object containing all the global default values configured in the
+// variable.
 let globalValues = {};
 if (data.data) {
   let customData = makeTableMap(data.data, 'key', 'value');
@@ -154,62 +155,56 @@ if (data.data) {
   }
 }
 
-let postBodyData = {}; 
-if (isEcommerce == true) {
-  postBodyData = [];
-  const items = getEventData("items");
-  let ids = [];
-  let itemCount = 0;
-  for (const item of items) {
-    let instance = {};
-    for (let key in item) {
-      instance[key] = item[key];
-    }
-    for (let key in globalValues) {
-     instance[key] = globalValues[key]; 
-    }
-    itemCount++;
-    instance.index = itemCount;
-    postBodyData.push(instance);
+// Iterate over the items in the datalayer to build up prediction data, and add
+// global values where they are missing.
+let predictionData = [];
+let itemCount = 0;
+const items = getEventData("items");
+for (const item of items) {
+  let instance = item;
+  for (const key in globalValues) {
+    instance[key] = globalValues[key];
   }
+  itemCount++;
+  instance.index = itemCount;
+  predictionData.push(instance);
 }
-else {
-  postBodyData = [globalValues];
-}
+logToConsole(predictionData);
 
-
-let requestOptions = {headers: postHeaders, method: 'POST'};
-
-if (data.requestTimeout) {
-  requestOptions.timeout = makeInteger(data.requestTimeout);
-}
-
+// The payload for VertexAI.
+const postBodyData = {
+  "instances": predictionData,
+  "parameters": {}
+};
 const postBody = JSON.stringify(postBodyData);
 
-const fullEndpointURL = data.endpointURL + '/projects/' + data.projectNumber +
-    '/locations/' + data.cloudLocation + '/endpoints/' + data.vertexEndpointID;
+const postHeaders = {
+  "Content-Type": "application/json"
+};
+const requestOptions = {
+  headers: postHeaders,
+  method: "POST",
+  authorization: auth
+};
 
-log("fullEndpointURL: " + fullEndpointURL);
+// Make the request to Vertex AI & process the response.
+return sendHttpRequest(url, requestOptions, postBody)
+  .then(success_result => {
+    logToConsole(JSON.stringify(success_result));
+    if (success_result.statusCode >= 200 && success_result.statusCode < 300) {
+      let result_object = JSON.parse(success_result.body);
+      let sum = 0;
+      result_object.predictions.forEach( num => { sum += num; });
+      return makeString(sum);
+    } else {
+      return data.defaultValueOnError;
+    }
+  })
+  .catch((error) => {
+    logToConsole("Error with VertexAI call to " + url + ". Error: ", error);
+    return data.defaultValueOnError;
+  });
 
-return sendHttpRequest(fullEndpointURL, requestOptions, postBody)
-    .then(
-        success_result => {
-          log(JSON.stringify(success_result));
-          if (success_result.statusCode >= 200 &&
-              success_result.statusCode < 300) {
-            let result_object = JSON.parse(success_result.body);
-            let sum = 0;
-            result_object.forEach( num => {
-              sum += num;
-            });
-            return makeString(sum);
-          } else {
-            return -1;
-          }
-        },
-        error_result => {
-          return -1;
-        });
 
 ___SERVER_PERMISSIONS___
 
@@ -256,27 +251,41 @@ ___SERVER_PERMISSIONS___
   {
     "instance": {
       "key": {
-        "publicId": "read_event_data",
+        "publicId": "use_google_credentials",
         "versionId": "1"
       },
       "param": [
         {
-          "key": "keyPatterns",
+          "key": "allowedScopes",
           "value": {
             "type": 2,
             "listItem": [
               {
                 "type": 1,
-                "string": "items"
+                "string": "https://www.googleapis.com/auth/cloud-platform"
               }
             ]
           }
-        },
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "read_event_data",
+        "versionId": "1"
+      },
+      "param": [
         {
           "key": "eventDataAccess",
           "value": {
             "type": 1,
-            "string": "specific"
+            "string": "any"
           }
         }
       ]
@@ -291,7 +300,108 @@ ___SERVER_PERMISSIONS___
 
 ___TESTS___
 
-scenarios: []
+scenarios:
+- name: Simple test case to show Vertex AI behaves as expected
+  code: |
+    const mockVariableData = {
+      projectNumber: "11111111111",
+      vertexEndpointId: "1234567891011121314",
+      cloudLocation: "europe-west2"
+    };
+
+    generateMockData([
+      {"item_id": "shoes", "item_name": "Shoes", "revenue": 80, "quantity": 2, "prediction": 1},
+      {"item_id": "tshirt", "item_name": "T-Shirt", "revenue": 30, "quantity": 1, "prediction": 1},
+    ], 200);
+
+    runCode(mockVariableData).then((resp) => {
+      assertThat(resp).isString();
+      assertThat(resp).isEqualTo("2");
+    });
+- name: Check default returned on error status code
+  code: |
+    const mockVariableData = {
+      projectNumber: "11111111111",
+      vertexEndpointId: "1234567891011121314",
+      cloudLocation: "europe-west2",
+      defaultValueOnError: "0",
+    };
+
+    generateMockData([
+      {"item_id": "shoes", "item_name": "Shoes", "revenue": 80, "quantity": 2, "prediction": 1},
+    ], 500);
+
+    runCode(mockVariableData).then((resp) => {
+      assertThat(resp).isString();
+      assertThat(resp).isEqualTo("0");
+    });
+setup: |-
+  const Promise = require("Promise");
+
+  const purchasedProducts = [];
+  let vertexAIResonse;
+
+  /**
+   * Build the mock data from the items.
+   * This method changes the global purchasedProducts & vertexAIResonse variables,
+   * which are then used in the mock logic.
+   * @param {!Array<number>} items - the items to mock.
+   * @param {number} statusCode - the status code to use in the VertexAI response.
+   */
+  function generateMockData(items, statusCode) {
+    generateMockItems(items);
+    generateMockVertexAI(items, statusCode);
+  }
+
+  /**
+   * Build the mock items from the event.
+   * This method changes the global purchasedProducts variable, which is used in
+   * the mock logic.
+   * @param {!Array<number>} items - the items to mock.
+   */
+  function generateMockItems(items) {
+    for (const item of items) {
+      purchasedProducts.push({
+        "item_id": item.item_id,
+        "item_name": item.item_name,
+        "price": item.revenue,
+        "quantity": item.quantity
+      });
+    }
+  }
+
+  /**
+   * Build the mock response from VertexAI.
+   * This method changes the global vertexAIResonse variable, which is used in
+   * the mock logic.
+   * @param {!Array<number>} items - the items to mock.
+   * @param {number} statusCode - the status code to use in the VertexAI response.
+   */
+  function generateMockVertexAI(items, statusCode) {
+    let predictions = [];
+    for (const item of items){
+      predictions.push(item.prediction);
+    }
+    const predictionString = predictions.join(', ');
+    vertexAIResonse = {
+      "statusCode": statusCode,
+      "body":"{\"predictions\": [" + predictionString + "]}"
+    };
+  }
+
+  // Change sendHttpRequest to return our mocked VertexAI response.
+  mock("sendHttpRequest", () => {
+    return Promise.create((resolve) => {
+      resolve(vertexAIResonse);
+    });
+  });
+
+  // Inject our products into the event data.
+  mock("getEventData", (data) => {
+    if (data === "items") {
+      return purchasedProducts;
+    }
+  });
 
 
 ___NOTES___

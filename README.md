@@ -9,6 +9,11 @@ with [Vertex AI](https://cloud.google.com/vertex-ai), to generate real time
 predictions based on ML models, and use them with Google Ads products and other
 services to improve your targeting and bidding processes.
 
+**NOTE**: The original soluion used a proxy app to facilitate the Vertex AI
+lookup you can see [the code in v1.0.0](
+    https://github.com/google-marketing-solutions/gps-phoebe/tree/v1.0.0). This
+was removed in v2.0.0 as sGTM added support for more general OAuth support.
+
 ## Description
 
 With server-side Tag Manager we are able to bid to a secret conversion value by
@@ -34,9 +39,7 @@ and outlines the flow.
     event fires, sending the payload to a GTM server container.
 3.  A custom variable is attached to a tag, triggered by “purchase” events,
     which queries the Vertex AI to get a prediction based on the provided data,
-    and replaces the revenue conversion value with the predicted value. This
-    request passes through a proxy app to enable unauthenticated calls to the
-    Vertex AI endpoint.
+    and replaces the revenue conversion value with the predicted value.
 4.  The updated event (with the predicted conversion value) is sent to Google
     Analytics, Google Ads or Floodlight.
 
@@ -71,25 +74,6 @@ git clone https://github.com/google/gps-phoebe
 If you are not using cloud shell, you must install the
 [gcloud CLI](https://cloud.google.com/sdk/docs/install) in your environment.
 
-### Deploy the proxy application
-
-You need to use a proxy application to call a Vertex AI endpoint, as currently
-server-side Tag Manager does not support outbound authenticated requests.
-
-Before proceeding, you need to select the project the Google Cloud project with
-the following command (substitute PROJECT_ID with the correct project id):
-
-```sh
-gcloud config set project PROJECT_ID
-```
-
-Execute the following command to deploy the proxy application to Cloud Run:
-
-```sh
-cd proxy_app/cloud_run
-gcloud run deploy phoebe-proxy-app --source proxy_app/cloud_run
-```
-
 ### Configure Tag Manager
 
 #### Import the template
@@ -119,21 +103,17 @@ Click on `Variable Configuration`to select a variable type:
 
 ![Variable Configuration](docs/img/variable_configuration.png "Variable Configuration")
 
-And select `Vertex Prediction`:
+And select `VertexAI Prediction`:
 
-![Vertex Prediction](docs/img/vertex_prediction.png "Vertex Prediction")
+![VertexAI Prediction](docs/img/vertex_prediction.png "VertexAI Prediction")
 
 Then, fill in the details of your environment in the configuration screen:
 
 ![Variable Details](docs/img/variable_details.png "Variable Details")
 
-Remember to append the Proxy App URL with the `/predict` suffix. Example:
-`https://my-proxy-ap.ew.r.appspot.com/predict`. You can find the URL to use in
-your [Cloud Run](https://console.cloud.google.com/run) console.
-
 Apart from the required fields, you need to provide the request data that will
-be sent to the Vertex AI endpoint through the Proxy App. This data would depend
-on what your AI Model requires. This is an example for our demo model:
+be sent to the Vertex AI endpoint. This data would depend on what your AI Model
+requires. This is an example for our demo model:
 
 ![Request Data](docs/img/request_data.png "Request Data")
 
@@ -151,6 +131,18 @@ For example, in Google Ads Conversion Tracking, you can use the `Conversion
 Value` field:
 
 ![Google Ads Conversion Tracking](docs/img/google_ads_conversion.png "Google Ads Conversion Tracking")
+
+## Permissions
+
+The template uses sGTM's `getGoogleAuth` API, which uses Google Cloud's
+[Application Default Credentials](
+https://cloud.google.com/docs/authentication/application-default-credentials)
+to access the service account running sGTM.
+
+Open up [IAM](https://console.cloud.google.com/iam-admin/iam) in Google Cloud,
+and edit the service account principal to give it the [Vertex AI User role](
+https://cloud.google.com/vertex-ai/docs/general/access-control#aiplatform.user)
+(`roles/aiplatform.user`).
 
 ## Disclaimers
 

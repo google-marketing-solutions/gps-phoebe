@@ -8,7 +8,6 @@ For the demo, you will deploy:
 -   A demo website of a retail store, using the
     [GTM Boilerplate](https://github.com/gtech-professional-services/gtm-boilerplate).
 -   A Vertex AI model and endpoint, created from fake generated data.
--   A proxy application to be able to call Vertex AI without authentication.
 -   A Google Tag Manager variable to hold the predicted value.
 
 Be mindful that each component has some cost associated to it, so make sure to
@@ -60,17 +59,7 @@ terraform init
 terraform apply
 ```
 
-5.  Deploy the proxy application. For the demo environment, we recommend using
-    the cloud run version. Execute the following commands to deploy it.
-
-```sh
-gcloud run deploy phoebe-proxy-app --source ../proxy_app/cloud_run # adapt to the proper route if needed
-```
-
-Take note of the Service URL (or Proxy App URL) shown in the console as you will
-use it in the next section.
-
-6.  Configure Tag Manager
+5.  Configure Tag Manager
 
 Download the template files from your browser:
 
@@ -91,7 +80,6 @@ Repeat the import operation from the server container, and use the
 Next, go to the `Variables` section, and replace the following variables with
 the right values:
 
--   `Proxy App URL`: The URL of your proxy application, ending with `/predict`.
 -   `Google Cloud Project Number`: The project number is shown in the
     [home dashboard](https://console.cloud.google.com/home/dashboard) of your
     cloud project.
