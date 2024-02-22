@@ -14,6 +14,10 @@ lookup you can see [the code in v1.0.0](
     https://github.com/google-marketing-solutions/gps-phoebe/tree/v1.0.0). This
 was removed in v2.0.0 as sGTM added support for more general OAuth support.
 
+> Tip 💡: Check out [the sGTM Pantheon](
+    https://github.com/google-marketing-solutions/gps-sgtm-pantheon/tree/main)
+for more tags for different use-cases.
+
 ## Description
 
 With server-side Tag Manager we are able to bid to a secret conversion value by
