@@ -5,8 +5,6 @@ using gPS Phoebe with server side tagging.
 
 For the demo, you will deploy:
 
--   A demo website of a retail store, using the
-    [GTM Boilerplate](https://github.com/gtech-professional-services/gtm-boilerplate).
 -   A Vertex AI model and endpoint, created from fake generated data.
 -   A Google Tag Manager variable to hold the predicted value.
 
@@ -26,40 +24,18 @@ this document and follow the [main one](../README.md).
     deployed and configured to use the Google Tag Manager Web container.
     You can find the detailed instructions
     [here](https://github.com/gtech-professional-services/gtm-boilerplate/blob/main/website/README.md#guided-deployment).
--   A local environment with [Cloud SDK](https://cloud.google.com/sdk) and
-    [terraform](https://www.terraform.io/) installed. We recommend using
-    [cloud shell](https://cloud.google.com/shell) for this deployment as all the
-    tools needed are already available.
 
 ## Installation
 
-1.  Clone this repository to your local environment and move to the demo folder
-    using the commands below.
+### Train and deploy the sample model
 
-```sh
-git clone https://github.com/google/gps-phoebe
-cd gps-phoebe/demo
-```
+1. Create a new instance in Vertex AI Workbench following the [official GCP instructions](https://cloud.google.com/vertex-ai/docs/workbench/instances/create#create). We recommend using the default values and the lowest possible configuration for a Virtual Machine.
 
-2.  Open the file `terraform.tfvars` and provide the appropriate values for each
-    field. Our recommendation for the deployment region is to use the same as
-    your server side tagging server, as that will reduce the network latency.
+2. Download the demo [Jupyter notebook](https://github.com/google-marketing-solutions/gps-phoebe/blob/main/demo/notebook/vertex_ai_demo_product_returns_case_study.ipynb) which will help train, evaluate and deploy the demo AI model.
 
-3.  Initialize the terraform environment.
+3. Open Jupyterlab in your Vertex AI Workbench instance and upload the notebook you downloaded. Follow the instructions in the notebook to get the model trained and deployed.
 
-```sh
-terraform init
-```
-
-4.  Start the model deployment. Make sure to follow the prompts to confirm the
-    operation (you need to enter yes when prompted if you agree with the
-    changes, otherwise the script will exit).
-
-```sh
-terraform apply
-```
-
-5.  Configure Tag Manager
+### Configure Tag Manager
 
 Download the template files from your browser:
 
@@ -84,7 +60,7 @@ the right values:
     [home dashboard](https://console.cloud.google.com/home/dashboard) of your
     cloud project.
 -   `Google Cloud Region`: The region you used for the deployment above.
-
+-   `Vertex Endpoint ID`: The ID of the Vertex endpoint.
 
 ## Disclaimers
 
