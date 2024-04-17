@@ -31,6 +31,10 @@ gPS Phoebe allows users to leverage server-side Tag Manager to get predictions
 directly from a Vertex AI model in real time, and use the predicted values as
 secret conversion values to be used in value based bidding.
 
+It's also possible to use a reCAPTCHA score as a feature for this model which
+can be captured in real-time and provided to gPS Phoebe as a Request Data property (see
+[gPS Cerberus](https://github.com/GoogleCloudPlatform/recaptcha-enterprise-google-tag-manager)).
+
 The image below provides a high level overview of the core components involved,
 and outlines the flow.
 
