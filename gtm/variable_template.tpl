@@ -1,4 +1,4 @@
-___INFO___
+﻿___INFO___
 
 {
   "type": "MACRO",
@@ -48,6 +48,13 @@ ___TEMPLATE_PARAMETERS___
         "type": "NON_EMPTY"
       }
     ]
+  },
+  {
+    "type": "CHECKBOX",
+    "name": "hasItems",
+    "checkboxText": "add to data layer items",
+    "simpleValueType": true,
+    "displayName": "Getting the prediction data from the items in the data layer"
   },
   {
     "type": "GROUP",
@@ -158,16 +165,20 @@ if (data.data) {
 // Iterate over the items in the datalayer to build up prediction data, and add
 // global values where they are missing.
 let predictionData = [];
-let itemCount = 0;
-const items = getEventData("items");
-for (const item of items) {
-  let instance = item;
-  for (const key in globalValues) {
-    instance[key] = globalValues[key];
+if (data.hasItems) {
+  let itemCount = 0;
+  const items = getEventData("items");
+  for (const item of items) {
+    let instance = item;
+    for (const key in globalValues) {
+      instance[key] = globalValues[key];
+    }
+    itemCount++;
+    instance.index = itemCount;
+    predictionData.push(instance);
   }
-  itemCount++;
-  instance.index = itemCount;
-  predictionData.push(instance);
+} else {
+  predictionData.push(globalValues);
 }
 logToConsole(predictionData);
 
@@ -317,6 +328,26 @@ scenarios:
     runCode(mockVariableData).then((resp) => {
       assertThat(resp).isString();
       assertThat(resp).isEqualTo("2");
+    });
+- name: Test case if hasItems is false to show Vertex AI behaves as expected
+  code: |
+    const mockVariableData = {
+      projectNumber: "11111111111",
+      vertexEndpointId: "1234567891011121314",
+      cloudLocation: "europe-west2",
+      age: "20",
+      address: "A",
+      job: "it",
+      hasItems: false
+    };
+
+    generateMockData([
+      {"prediction": 39}
+    ], 200);
+
+    runCode(mockVariableData).then((resp) => {
+      assertThat(resp).isString();
+      assertThat(resp).isEqualTo("39");
     });
 - name: Check default returned on error status code
   code: |
