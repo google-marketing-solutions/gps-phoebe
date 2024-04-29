@@ -51,10 +51,10 @@ ___TEMPLATE_PARAMETERS___
   },
   {
     "type": "CHECKBOX",
-    "name": "hasItems",
+    "name": "addRequestDataToItems",
     "checkboxText": "add to data layer items",
     "simpleValueType": true,
-    "displayName": "Getting the prediction data from the items in the data layer"
+    "displayName": "Add the request data below to the datalayer items"
   },
   {
     "type": "GROUP",
@@ -165,7 +165,7 @@ if (data.data) {
 // Iterate over the items in the datalayer to build up prediction data, and add
 // global values where they are missing.
 let predictionData = [];
-if (data.hasItems) {
+if (data.addRequestDataToItems) {
   let itemCount = 0;
   const items = getEventData("items");
   for (const item of items) {
@@ -316,8 +316,9 @@ scenarios:
   code: |
     const mockVariableData = {
       projectNumber: "11111111111",
-      vertexEndpointId: "1234567891011121314",
-      cloudLocation: "europe-west2"
+      vertexEndpointID: "1234567891011121314",
+      cloudLocation: "europe-west2",
+      addRequestDataToItems: true
     };
 
     generateMockData([
@@ -329,16 +330,19 @@ scenarios:
       assertThat(resp).isString();
       assertThat(resp).isEqualTo("2");
     });
-- name: Test case if hasItems is false to show Vertex AI behaves as expected
+- name: Test case if 'addRequestDataToItems' is false to show Vertex AI behaves as
+    expected
   code: |
     const mockVariableData = {
       projectNumber: "11111111111",
-      vertexEndpointId: "1234567891011121314",
+      vertexEndpointID: "1234567891011121314",
       cloudLocation: "europe-west2",
-      age: "20",
-      address: "A",
-      job: "it",
-      hasItems: false
+      addRequestDataToItems: false,
+      data: [
+        {"key": "age", "value": "20"},
+        {"key": "address", "value": "A"},
+        {"key": "job", "value": "it"}
+      ]
     };
 
     generateMockData([
@@ -353,8 +357,9 @@ scenarios:
   code: |
     const mockVariableData = {
       projectNumber: "11111111111",
-      vertexEndpointId: "1234567891011121314",
+      vertexEndpointID: "1234567891011121314",
       cloudLocation: "europe-west2",
+      addRequestDataToItems: true,
       defaultValueOnError: "0",
     };
 
