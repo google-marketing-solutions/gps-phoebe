@@ -345,13 +345,18 @@ scenarios:
       ]
     };
 
-    generateMockData([
-      {"prediction": 39}
-    ], 200);
+    mock("sendHttpRequest", () => {
+      return Promise.create((resolve) => {
+        resolve({
+          "statusCode": 200,
+          "body":"{\"predictions\": [100]}"
+        });
+      });
+    });
 
     runCode(mockVariableData).then((resp) => {
       assertThat(resp).isString();
-      assertThat(resp).isEqualTo("39");
+      assertThat(resp).isEqualTo("100");
     });
 - name: Check default returned on error status code
   code: |
