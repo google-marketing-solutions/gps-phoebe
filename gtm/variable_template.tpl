@@ -114,7 +114,7 @@ ___SANDBOXED_JS_FOR_SERVER___
 /**
  * @fileoverview sGTM variable tag that uses information in the datalayer to
  * make a call to VertexAI, to determine the conversion value.
- * @version 2.0.0
+ * @version 2.1.0
  */
 const getEventData = require("getEventData");
 const getGoogleAuth = require("getGoogleAuth");
@@ -312,26 +312,41 @@ ___SERVER_PERMISSIONS___
 ___TESTS___
 
 scenarios:
-- name: Simple test case to show Vertex AI behaves as expected
+- name: Prediction data is added to items
   code: |
     const mockVariableData = {
       projectNumber: "11111111111",
       vertexEndpointID: "1234567891011121314",
       cloudLocation: "europe-west2",
-      addRequestDataToItems: true
+      addRequestDataToItems: true,
+      data: [
+        {"key": "browser", "value": "Chrome"},
+      ]
     };
 
-    generateMockData([
-      {"item_id": "shoes", "item_name": "Shoes", "revenue": 80, "quantity": 2, "prediction": 1},
-      {"item_id": "tshirt", "item_name": "T-Shirt", "revenue": 30, "quantity": 1, "prediction": 1},
-    ], 200);
+    generateMockItems([
+      {"item_id": "shoes", "item_name": "Shoes", "revenue": 80, "quantity": 2},
+    ]);
+
+    generateMockVertexAI([80], 200);
+
+    expectedPayload = JSON.stringify({
+      "instances":[{
+        "item_id": "shoes",
+        "item_name": "Shoes",
+        "price": 80,
+        "quantity": 2,
+        "browser": "Chrome",
+        "index": 1
+      }],
+      "parameters": {}
+    });
 
     runCode(mockVariableData).then((resp) => {
       assertThat(resp).isString();
-      assertThat(resp).isEqualTo("2");
+      assertThat(resp).isEqualTo("80");
     });
-- name: Test case if 'addRequestDataToItems' is false to show Vertex AI behaves as
-    expected
+- name: Prediction data is not added to the items
   code: |
     const mockVariableData = {
       projectNumber: "11111111111",
@@ -345,18 +360,58 @@ scenarios:
       ]
     };
 
-    mock("sendHttpRequest", () => {
-      return Promise.create((resolve) => {
-        resolve({
-          "statusCode": 200,
-          "body":"{\"predictions\": [100]}"
-        });
-      });
+    generateMockVertexAI([100], 200);
+
+    expectedPayload = JSON.stringify({
+      "instances":[{
+        "age": "20",
+        "address": "A",
+        "job": "it"
+      }],
+      "parameters":{}
     });
 
     runCode(mockVariableData).then((resp) => {
       assertThat(resp).isString();
       assertThat(resp).isEqualTo("100");
+    });
+- name: Prediction responses are summed for multiple items
+  code: |
+    const mockVariableData = {
+      projectNumber: "11111111111",
+      vertexEndpointID: "1234567891011121314",
+      cloudLocation: "europe-west2",
+      addRequestDataToItems: true
+    };
+
+    generateMockItems([
+      {"item_id": "shoes", "item_name": "Shoes", "revenue": 80, "quantity": 2},
+      {"item_id": "blazer", "item_name": "Blazer", "revenue": 100, "quantity": 1},
+    ]);
+
+    generateMockVertexAI([80, 100], 200);
+
+    expectedPayload = JSON.stringify({
+      "instances":[{
+        "item_id": "shoes",
+        "item_name": "Shoes",
+        "price": 80,
+        "quantity": 2,
+        "index": 1
+      },
+      {
+        "item_id": "blazer",
+        "item_name": "Blazer",
+        "price": 100,
+        "quantity": 1,
+        "index": 2
+      }],
+      "parameters": {}
+    });
+
+    runCode(mockVariableData).then((resp) => {
+      assertThat(resp).isString();
+      assertThat(resp).isEqualTo("180");
     });
 - name: Check default returned on error status code
   code: |
@@ -365,34 +420,37 @@ scenarios:
       vertexEndpointID: "1234567891011121314",
       cloudLocation: "europe-west2",
       addRequestDataToItems: true,
-      defaultValueOnError: "0",
+      defaultValueOnError: "0"
     };
 
-    generateMockData([
-      {"item_id": "shoes", "item_name": "Shoes", "revenue": 80, "quantity": 2, "prediction": 1},
-    ], 500);
+    generateMockItems([
+      {"item_id": "shoes", "item_name": "Shoes", "revenue": 80, "quantity": 2},
+    ]);
+
+    generateMockVertexAI([], 500);
+
+    expectedPayload = JSON.stringify({
+      "instances":[{
+        "item_id": "shoes",
+        "item_name": "Shoes",
+        "price": 80,
+        "quantity": 2,
+        "index": 1
+      }],
+      "parameters": {}
+    });
 
     runCode(mockVariableData).then((resp) => {
       assertThat(resp).isString();
       assertThat(resp).isEqualTo("0");
     });
 setup: |-
+  const JSON = require("JSON");
   const Promise = require("Promise");
 
   const purchasedProducts = [];
   let vertexAIResonse;
-
-  /**
-   * Build the mock data from the items.
-   * This method changes the global purchasedProducts & vertexAIResonse variables,
-   * which are then used in the mock logic.
-   * @param {!Array<number>} items - the items to mock.
-   * @param {number} statusCode - the status code to use in the VertexAI response.
-   */
-  function generateMockData(items, statusCode) {
-    generateMockItems(items);
-    generateMockVertexAI(items, statusCode);
-  }
+  let expectedPayload;
 
   /**
    * Build the mock items from the event.
@@ -415,14 +473,10 @@ setup: |-
    * Build the mock response from VertexAI.
    * This method changes the global vertexAIResonse variable, which is used in
    * the mock logic.
-   * @param {!Array<number>} items - the items to mock.
+   * @param {!Array<number>} predictions - the predictions to use in the response.
    * @param {number} statusCode - the status code to use in the VertexAI response.
    */
-  function generateMockVertexAI(items, statusCode) {
-    let predictions = [];
-    for (const item of items){
-      predictions.push(item.prediction);
-    }
+  function generateMockVertexAI(predictions, statusCode) {
     const predictionString = predictions.join(', ');
     vertexAIResonse = {
       "statusCode": statusCode,
@@ -431,7 +485,8 @@ setup: |-
   }
 
   // Change sendHttpRequest to return our mocked VertexAI response.
-  mock("sendHttpRequest", () => {
+  mock("sendHttpRequest", (url, requestOptions, postBody) => {
+    assertThat(postBody).isEqualTo(expectedPayload);
     return Promise.create((resolve) => {
       resolve(vertexAIResonse);
     });
