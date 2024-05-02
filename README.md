@@ -18,6 +18,11 @@ was removed in v2.0.0 as sGTM added support for more general OAuth support.
     https://github.com/google-marketing-solutions/gps-sgtm-pantheon/tree/main)
 for more tags for different use-cases.
 
+> Important ❗️: Phoebe doesn't provide an AI model within Vertex AI. You can
+    think of Phoebe as the plumbing between your tagging environment, your own
+    custom model in Vertex AI, and where you want to send the value, e.g. Google
+    Ads.
+
 ## Description
 
 With server-side Tag Manager we are able to bid to a secret conversion value by
