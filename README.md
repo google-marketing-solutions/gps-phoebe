@@ -9,7 +9,7 @@ with [Vertex AI](https://cloud.google.com/vertex-ai), to generate real time
 predictions based on ML models, and use them with Google Ads products and other
 services to improve your targeting and bidding processes.
 
-**NOTE**: The original soluion used a proxy app to facilitate the Vertex AI
+**NOTE**: The original solution used a proxy app to facilitate the Vertex AI
 lookup you can see [the code in v1.0.0](
     https://github.com/google-marketing-solutions/gps-phoebe/tree/v1.0.0). This
 was removed in v2.0.0 as sGTM added support for more general OAuth support.
@@ -70,7 +70,7 @@ implementation guide.
 *   A Google Cloud project with billing enabled
 *   A GTM server container up and running, and receiving events from a GTM web
     container
-*   A Vertex AI endpoint with the model you want to us
+*   A Vertex AI endpoint with the model you want to use
 *   It is recommended to have all the components in the same cloud region to
     reduce network latency
 
@@ -112,7 +112,7 @@ Now, from the Google Tag Manager UI, go to the `Variables` section, and click on
 
 ![New Variable](docs/img/new_variable.png "New Variable")
 
-Click on `Variable Configuration`to select a variable type:
+Click on `Variable Configuration` to select a variable type:
 
 ![Variable Configuration](docs/img/variable_configuration.png "Variable Configuration")
 
